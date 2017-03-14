@@ -1,5 +1,5 @@
 #MyEclipse Hibernate Properties
-#Sun Mar 12 17:35:02 CST 2017
+#Tue Mar 14 10:39:34 CST 2017
 genVersionTag=false
 genAnnotations=false
 configFile=/flowershop/src/applicationContext.xml
