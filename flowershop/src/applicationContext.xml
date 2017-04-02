@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans
-	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd" xmlns:tx="http://www.springframework.org/schema/tx">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+	xmlns:tx="http://www.springframework.org/schema/tx">
 
 
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		
+
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/jkxyshsflower?useUnicode=true&amp;characterEncoding=utf-8">
+			value="jdbc:mysql://localhost:3306/flowerdb?useUnicode=true&amp;characterEncoding=utf-8">
 		</property>
 		<property name="username" value="root"></property>
 		<property name="password" value="wish"></property>
@@ -30,16 +28,18 @@
 		</property>
 		<property name="mappingResources">
 			<list>
-				<value>com/test/model/Guashi.hbm.xml</value>
 				<value>com/test/model/Flower.hbm.xml</value>
+				<value>com/test/model/Guashi.hbm.xml</value>
 				<value>com/test/model/Orderitem.hbm.xml</value>
+				<value>com/test/model/Orders.hbm.xml</value>
 				<value>com/test/model/Userdetail.hbm.xml</value>
-				<value>com/test/model/User.hbm.xml</value>
 				<value>com/test/model/Catalog.hbm.xml</value>
-				<value>com/test/model/Orders.hbm.xml</value></list>
-		</property></bean>
-		
-		<bean id="catalogDAO" class="com.test.dao.impl.CatalogDAO">
+				<value>com/test/model/User.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="catalogDAO" class="com.test.dao.impl.CatalogDAO">
 		<property name="sessionfactory">
 			<ref bean="sessionFactory" />
 		</property>
@@ -47,7 +47,7 @@
 	<bean id="catalogService" class="com.test.service.impl.CatalogService">
 		<property name="catalogDAO" ref="catalogDAO"></property>
 	</bean>
-	
+
 	<bean id="flowerDAO" class="com.test.dao.impl.FlowerDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
@@ -56,12 +56,45 @@
 	<bean id="flowerService" class="com.test.service.impl.FlowerService">
 		<property name="flowerDAO" ref="flowerDAO"></property>
 	</bean>
+
 	<bean id="flowerAction" class="com.test.action.flowerAction">
 		<property name="catalogService" ref="catalogService"></property>
 		<property name="flowerService" ref="flowerService"></property>
 	</bean>
+	<bean id="userDAO" class="com.test.dao.impl.UserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="userService" class="com.test.service.impl.UserService">
+		<property name="userDAO" ref="userDAO"></property>
+	</bean>
+	<!-- <bean id="guashiUser" class="com.test.action.userAction"> <property 
+		name="userid" ref="userid"></property> </bean> -->
+	<bean id="userAction" class="com.test.action.userAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="shoppingAction" class="com.test.action.shoppingAction">
+		<property name="flowerService" ref="flowerService">
+		</property>
+
+	</bean>
+
+	<bean id="orerDAO" class="com.test.dao.impl.OrderDAO">
+		<property name="sessionFacory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="orderService" class="com.test.service.impl.OrderService">
+		<property name="orderDAO" ref="orerDAO"></property>
+	</bean>
+	<bean id="orderAction" class="com.test.action.orderAction">
+		<property name="orderService" ref="orderService"></property>
+	</bean>
+
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager" /></beans>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

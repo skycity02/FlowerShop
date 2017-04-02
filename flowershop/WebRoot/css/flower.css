@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+
+.content {
+	clear: both;
+	margin: 20px auto;
+	width: 1220px;
+	padding-top: 30px;
+	text-align: center;
+}
+
+.left {
+	margin-left: 0px;
+	padding-left: 60px;
+	width: 100px;
+	float: left;
+	text-align: left;
+}
+
+.right {
+	float: left;
+	margin-left: 100px;
+	width: 888px;
+	text-align: center;
+}
+
+.head_left {
+	float: left;
+	margin-left: 100px;
+}
+
+.head_right {
+	float: right;
+	padding-top: 100px;
+	padding-right: 200px;
+}
+
+.foot {
+	clear: both;
+	padding: 20px;
+}
+
+.newflower {
+	float: left;
+	border: #9ca5cc 1px solid;
+	padding: 0px;
+	margin: 0px;
+	width: 220px;
+	height: 325px;
+	position: relative
+}
+/*MARGIN-RIGHT:auto;MARGIN-LEFT:auto;*/
+
+.flowercheck {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	width: 220px;
+}
+
+.divcss5 {
+	border: 1px solid #000;
+	width: 300px;
+	height: 100px
+}
+
+.newflower img {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	max-width: 220px;
+	width: expression_r(this.width > 220 ? "220px" : this.width);
+	max-height: 240px;
+	height: expression_r(this.height > 240 ? "240px" : this.height);
+}
+
+aa {
+	align: center;
+	width: 180px;
+	font-size: 15px;
+	padding: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	position: absolute;
+	bottom: 5px;
+	left:0px;
+	right:0px;
+	/* 
+	margin-right: auto;*/
+}

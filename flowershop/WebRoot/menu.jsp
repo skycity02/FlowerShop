@@ -26,9 +26,6 @@
 </head>
 
 <body>
-
-
-
 	<s:iterator value="#request.catalogs" id="catalog">
 		<a href="browseFlowerPaging.action?catalogid=
 		    <s:property value=

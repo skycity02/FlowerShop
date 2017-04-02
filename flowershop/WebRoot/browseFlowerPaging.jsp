@@ -41,15 +41,15 @@
 				<div class="newflower">
 					<s:form action="shoppingAction" method="post" theme="simple">
 						<img src="pic/<s:property value="#flower.picture"/>" />
-						<br>
+						<br><aa>
 						<s:property value="#flower.flowername" />
 						<br>
 						<s:property value="#flower.price" />元
  <br>
- 数量<s:textfield size="4" name="quantity"></s:textfield>
+ 数量<s:textfield size="4" name="quantity" value="1"></s:textfield>
 	<input type="hidden" name="id" value="<s:property value="#flower.flowerid" />">					
 						
-						<s:submit value="购买"></s:submit>
+						<s:submit value="购买"></s:submit></aa>
 					</s:form>
 				</div>
 			</s:iterator>
